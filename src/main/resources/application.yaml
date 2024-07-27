@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: orm-cache
