@@ -17,6 +17,6 @@ public class UserMyBatisRepository extends ServiceImpl<UserMapper, User> impleme
 
     @Override
     public void saveUser(User user) {
-        save(user);
+        saveOrUpdate(user);
     }
 }
