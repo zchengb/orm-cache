@@ -22,3 +22,14 @@ spring:
       maximum-pool-size: 300
       minimumIdle: 10
       connection-test-query: "select 1"
+
+logging:
+  level:
+    root: info
+    org.springframework.web: info
+    com.baomidou.mybatisplus: debug
+
+mybatis-plus:
+  type-handlers-package: com.caac.framework.mybatis
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

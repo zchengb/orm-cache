@@ -7,4 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserJpaRepository extends JpaRepository<User, Long>, UserRepository {
+    @Override
+    default void saveUser(User user) {
+        this.save(user);
+    }
 }
