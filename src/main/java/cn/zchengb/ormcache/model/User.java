@@ -8,13 +8,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @Entity
 @Table(name = "user")
 @TableName("user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
     @Id
     @TableId(type = IdType.AUTO)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

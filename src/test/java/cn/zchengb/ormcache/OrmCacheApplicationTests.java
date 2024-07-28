@@ -1,6 +1,7 @@
 package cn.zchengb.ormcache;
 
 import cn.zchengb.ormcache.infrastructure.UserRepository;
+import cn.zchengb.ormcache.infrastructure.mybatis.mapper.UserCacheMapper;
 import cn.zchengb.ormcache.infrastructure.mybatis.mapper.UserMapper;
 import cn.zchengb.ormcache.model.User;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,9 @@ class OrmCacheApplicationTests {
 
     @Autowired
     private SqlSessionFactory mybatisSqlSessionFactory;
+
+    @Autowired
+    private UserCacheMapper userCacheMapper;
 
     @Test
     @Transactional
@@ -69,6 +73,14 @@ class OrmCacheApplicationTests {
 
         user2 = mapper2.selectById(userId);
         log.info("after update user2 name: {}", user2.getName());
+    }
+
+    @Test
+    void mybatis_l2_cache() {
+        var user = new User("old user name");
+        userCacheMapper.insert(user);
+        userCacheMapper.selectById(user.getId());
+        userCacheMapper.selectById(user.getId());
     }
 
     @Test
